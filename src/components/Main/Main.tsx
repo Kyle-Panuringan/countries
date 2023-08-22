@@ -37,12 +37,3 @@ const Main = ({ countries, search, region }: Props) => {
 };
 
 export default Main;
-
-// countries.map((country) => {
-//   return (
-//     <div className="card">
-//       <img src={country.flags.png} />
-//       <p>{country.name.common}</p>
-//     </div>
-//   );
-// })
