@@ -5,6 +5,8 @@ import logo from "../../assets/logo.png";
 interface Props {
   sortName: () => void;
   sortPopulation: () => void;
+  setSearch: React.Dispatch<React.SetStateAction<string>>;
+  setRegion: React.Dispatch<React.SetStateAction<string>>;
   isSort: {
     sortNameAscend: boolean;
     sortPopulationAscend: boolean;
@@ -13,7 +15,13 @@ interface Props {
   };
 }
 
-const Navbar = ({ sortName, sortPopulation, isSort }: Props) => {
+const Navbar = ({
+  sortName,
+  sortPopulation,
+  setSearch,
+  setRegion,
+  isSort,
+}: Props) => {
   const nameIcon = isSort.sortNameAscend ? (
     <TiArrowSortedUp />
   ) : (
@@ -30,12 +38,20 @@ const Navbar = ({ sortName, sortPopulation, isSort }: Props) => {
       <div id="navbarBase">
         <img src={logo} />
 
-        <input type="text" />
+        <input
+          type="text"
+          placeholder="Search...."
+          onChange={(e) => setSearch(e.target.value)}
+        />
 
-        <select>
-          <option value="Test">All</option>
-          <option value="Test">Test</option>
-          <option value="Test">Test</option>
+        <select id="region" onChange={(e) => setRegion(e.target.value)}>
+          <option disabled>-- Select a region --</option>
+          <option value="">All</option>
+          <option value="Africa">Africa</option>
+          <option value="Americas">Americas</option>
+          <option value="Asia">Asia</option>
+          <option value="Europe">Europe</option>
+          <option value="Oceania">Oceania</option>
         </select>
 
         <div className="navbarButtons">

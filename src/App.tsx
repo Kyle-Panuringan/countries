@@ -87,10 +87,13 @@ export interface Country {
   name: { common: string };
   flags: { png: string };
   population: number;
+  region: string;
 }
 
 const App = () => {
   const [countries, setCountries] = useState<Country[]>([]);
+  const [search, setSearch] = useState("");
+  const [region, setRegion] = useState("");
   const [isSort, setIsSort] = useState({
     sortNameAscend: false,
     sortPopulationAscend: false,
@@ -158,8 +161,10 @@ const App = () => {
         sortName={sortName}
         sortPopulation={sortPopulation}
         isSort={isSort}
+        setSearch={setSearch}
+        setRegion={setRegion}
       />
-      <Main countries={countries} />
+      <Main countries={countries} search={search} region={region} />
     </div>
   );
 };
