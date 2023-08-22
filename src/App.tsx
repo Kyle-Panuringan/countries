@@ -98,6 +98,40 @@ const App = () => {
     sortPopulationSelected: false,
   });
 
+  function sortName() {
+    setCountries(
+      isSort.sortNameAscend
+        ? countries.sort((a, b) => {
+            let x = a.name.common.toUpperCase();
+            let y = b.name.common.toUpperCase();
+            if (x < y) {
+              return -1;
+            }
+            if (x > y) {
+              return 1;
+            }
+            return 0;
+          })
+        : countries.sort((a, b) => {
+            let x = a.name.common.toUpperCase();
+            let y = b.name.common.toUpperCase();
+            if (x < y) {
+              return 1;
+            }
+            if (x > y) {
+              return -1;
+            }
+            return 0;
+          })
+    );
+    setIsSort({
+      sortNameAscend: !isSort.sortNameAscend,
+      sortPopulationAscend: false,
+      sortNameSelected: true,
+      sortPopulationSelected: false,
+    });
+  }
+
   function sortPopulation() {
     setCountries(
       isSort.sortPopulationAscend
@@ -108,7 +142,7 @@ const App = () => {
       sortNameAscend: false,
       sortPopulationAscend: !isSort.sortPopulationAscend,
       sortNameSelected: false,
-      sortPopulationSelected: !isSort.sortPopulationSelected,
+      sortPopulationSelected: true,
     });
   }
 
@@ -120,7 +154,11 @@ const App = () => {
 
   return (
     <div id="App">
-      <Navbar sortPopulation={sortPopulation} />
+      <Navbar
+        sortName={sortName}
+        sortPopulation={sortPopulation}
+        isSort={isSort}
+      />
       <Main countries={countries} />
     </div>
   );

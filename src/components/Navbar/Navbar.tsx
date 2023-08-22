@@ -1,12 +1,30 @@
 import "./navbar.scss";
-import { TiArrowSortedUp } from "react-icons/ti";
+import { TiArrowSortedUp, TiArrowSortedDown } from "react-icons/ti";
 import logo from "../../assets/logo.png";
 
 interface Props {
+  sortName: () => void;
   sortPopulation: () => void;
+  isSort: {
+    sortNameAscend: boolean;
+    sortPopulationAscend: boolean;
+    sortNameSelected: boolean;
+    sortPopulationSelected: boolean;
+  };
 }
 
-const Navbar = ({ sortPopulation }: Props) => {
+const Navbar = ({ sortName, sortPopulation, isSort }: Props) => {
+  const nameIcon = isSort.sortNameAscend ? (
+    <TiArrowSortedUp />
+  ) : (
+    <TiArrowSortedDown />
+  );
+  const populationIcon = isSort.sortPopulationAscend ? (
+    <TiArrowSortedUp />
+  ) : (
+    <TiArrowSortedDown />
+  );
+
   return (
     <div id="navbar">
       <div id="navbarBase">
@@ -21,11 +39,11 @@ const Navbar = ({ sortPopulation }: Props) => {
         </select>
 
         <div className="navbarButtons">
-          <button type="button" id="buttonName">
-            Name <TiArrowSortedUp />
+          <button type="button" id="buttonName" onClick={sortName}>
+            Name {isSort.sortNameSelected && nameIcon}
           </button>
           <button type="button" id="buttonPopulation" onClick={sortPopulation}>
-            Population <TiArrowSortedUp />
+            Population {isSort.sortPopulationSelected && populationIcon}
           </button>
         </div>
       </div>
