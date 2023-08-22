@@ -2,7 +2,11 @@ import "./navbar.scss";
 import { TiArrowSortedUp } from "react-icons/ti";
 import logo from "../../assets/logo.png";
 
-const Navbar = () => {
+interface Props {
+  sortPopulation: () => void;
+}
+
+const Navbar = ({ sortPopulation }: Props) => {
   return (
     <div id="navbar">
       <div id="navbarBase">
@@ -20,7 +24,7 @@ const Navbar = () => {
           <button type="button" id="buttonName">
             Name <TiArrowSortedUp />
           </button>
-          <button type="button" id="buttonPopulation">
+          <button type="button" id="buttonPopulation" onClick={sortPopulation}>
             Population <TiArrowSortedUp />
           </button>
         </div>

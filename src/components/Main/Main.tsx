@@ -1,13 +1,22 @@
+import { Country } from "../../App";
 import "./main.scss";
 
-const Main = () => {
+interface Props {
+  countries: Country[];
+}
+
+const Main = ({ countries }: Props) => {
   return (
     <div id="main">
       <div className="grid">
-        <div className="card">a</div>
-        <div className="card">a</div>
-        <div className="card">a</div>
-        <div className="card">a</div>
+        {countries.map((country) => {
+          return (
+            <div className="card">
+              <img src={country.flags.png} />
+              <p>{country.name.common}</p>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
