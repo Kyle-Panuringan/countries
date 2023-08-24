@@ -59,7 +59,9 @@
   }
 
   .modalButtons {
-    button {
+    a {
+      display: block;
+      text-decoration: none;
       @include modalFontSize();
       width: 100%;
       margin: 20px 0;

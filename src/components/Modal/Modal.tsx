@@ -13,6 +13,7 @@ const Modal = ({ countryData, setIsModal }: Props) => {
       <div className="modalBox">
         <div className="modalBoxInfo">
           <img src={countryData?.flags.svg} />
+
           <div className="modalTable">
             <button className="modalClose" onClick={() => setIsModal(false)}>
               <CgClose />
@@ -60,7 +61,9 @@ const Modal = ({ countryData, setIsModal }: Props) => {
             </table>
 
             <div className="modalButtons">
-              <button>View Google Map</button>
+              <a href={countryData?.maps.googleMaps} target="_blank">
+                View Google Map
+              </a>
             </div>
           </div>
         </div>
