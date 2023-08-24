@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import Main from "./components/Main/Main";
 import Navbar from "./components/Navbar/Navbar";
 import axios from "axios";
-const temp = [
+
+const a = [
   {
     name: {
       common: "Japan",
@@ -83,15 +84,23 @@ const temp = [
     postalCode: { format: "###-####", regex: "^(\\d{7})$" },
   },
 ];
+
 export interface Country {
   name: { common: string };
-  flags: { png: string };
+  flags: { png: string; svg: string };
   population: number;
   region: string;
+  maps: {
+    googleMaps: string;
+  };
+  capital: string[];
+  currencies: [];
+  languages: [];
 }
 
 const App = () => {
   const [countries, setCountries] = useState<Country[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [region, setRegion] = useState("");
   const [isSort, setIsSort] = useState({
@@ -152,7 +161,14 @@ const App = () => {
   useEffect(() => {
     axios
       .get("https://restcountries.com/v3.1/all")
-      .then((res) => setCountries(res.data));
+      .then((res) => {
+        setCountries(res.data);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log(err.message);
+        setIsLoading(false);
+      });
   }, []);
 
   return (
@@ -164,7 +180,12 @@ const App = () => {
         setSearch={setSearch}
         setRegion={setRegion}
       />
-      <Main countries={countries} search={search} region={region} />
+      <Main
+        isLoading={isLoading}
+        countries={countries}
+        search={search}
+        region={region}
+      />
     </div>
   );
 };

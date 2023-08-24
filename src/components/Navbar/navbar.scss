@@ -16,18 +16,34 @@
   text-align: center;
   width: 90%;
 
-  *:not(h1) {
-    @include navbarFontSize();
-  }
-
   > *:not(.navbarButtons) {
     width: 100%;
-    margin: 5px 0;
-    padding: 10px;
+  }
+
+  #logoMobile {
+    display: none;
+  }
+
+  #navbarSearchHamburger {
+    display: flex;
+    > * {
+      margin: 5px 0;
+      padding: 10px;
+    }
+    input {
+      width: 100%;
+    }
+    button {
+      display: none;
+      cursor: pointer;
+    }
   }
 
   select {
     text-align: center;
+    width: 100%;
+    margin: 5px 0;
+    padding: 10px;
   }
 }
 

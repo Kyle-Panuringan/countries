@@ -8,3 +8,43 @@
   display: flex;
   height: 100vh;
 }
+
+@media (890px >= width) {
+  #App {
+    flex-direction: column;
+  }
+  #navbar {
+    width: 100%;
+    #logo {
+      display: none;
+    }
+    #logoMobile {
+      display: block;
+      margin: 10px 0;
+      height: 100px;
+      width: 50%;
+      margin-inline: auto;
+    }
+
+    .navbarFilters {
+      display: none;
+    }
+
+    .active {
+      display: block;
+    }
+
+    .active {
+      display: block;
+    }
+
+    #navbarSearchHamburger {
+      button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+      }
+    }
+  }
+}
