@@ -3,7 +3,6 @@ import { TiArrowSortedUp, TiArrowSortedDown } from "react-icons/ti";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { CgClose } from "react-icons/cg";
 import logo from "../../assets/logo.png";
-import logoMobile from "../../assets/logoMobile.png";
 import { useState } from "react";
 
 interface Props {
